@@ -1,5 +1,5 @@
 ﻿<script type="text/javascript">
-	if(typeof jQuery != 'undefined') $.noConflict(true);
+	if (typeof jQuery != 'undefined') $.noConflict(true);
 </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css" />
@@ -7,17 +7,121 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.css"/>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="http://www.phila.gov/Style%20Library/CSS/fullcalendar.print.css"/>
 <link rel="stylesheet" type="text/css" media="screen" href="http://www.phila.gov/Style%20Library/CSS/jquery-ui-1.8.1.custom.css"/>
-<link rel="stylesheet" type="text/css" href="http://www.phila.gov/Style%20Library/CSS/E-design.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.phila.gov/Style%20Library/CSS/E-design.css" />
 <!--<link href="http://admin-www.phila.gov/Style%20Library/CSS/C-typography.css" rel="stylesheet" type="text/css">-->
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.min.js" type="text/javascript"></script>
 <script src="http://www.phila.gov/Style%20Library/Scripts/spin.min.js" type="text/javascript"></script>
-<style type="text/css">.cf:after,.cf:before{content:" ";display:table}.cf:after{clear:both}.ph-widget.sessionViewer .address{height:500px;max-height:500px;overflow:auto;position:relative;box-sizing:border-box}.fc-event{background:#cecece!important;color:#fff!important}.fc-day-grid-event{cursor:pointer}.page #calendar table{float:none}.mapurl{background-color:#fff}.mapurl::after{clear:both;display:block;content:""}.mapurl a{margin:0;background:#fff!important;display:inline-block!important;padding:5px!important;float:right}.ph-widget.sessionViewer .calendarColumn .label,.ph-widget.sessionViewer .calendarColumnFullRow .decisionHistory.labels,.ph-widget.sessionViewer .calendarColumnFullRow .label{font-size:.9rem;font-weight:600;margin-bottom:3px;color:#444}.infoPanel{line-height:1rem;font-size:.8rem;font-weight:100!important;color:#444}.ph-widget.sessionViewer .calendarColumn,.ph-widget.sessionViewer .calendarColumnFullRow{margin:.4rem 0}.infoPanel table{width:100%;text-align:center}.infoPanel table tr td,.infoPanel table tr th{padding:5px;font-size:.8rem}.infoPanel table tbody tr:nth-child(odd){background:#efefef}.courtDetailContainer,.decisionDetailContainer,.entityDetailContainer{display:none}.entityDetailContainer{border-top:1px dashed #cecece;border-bottom:1px dashed #cecece}.courtDetailContainer::after,.decisionDetailContainer::after,.entityDetailContainer::after{clear:both;content:"";display:block}</style>
-										
+<style type="text/css">
+	.cf:after,
+	.cf:before {
+		content: " ";
+		display: table
+	}
+
+	.cf:after {
+		clear: both
+	}
+
+	.ph-widget.sessionViewer .address {
+		height: 500px;
+		max-height: 500px;
+		overflow: auto;
+		position: relative;
+		box-sizing: border-box
+	}
+
+	.fc-event {
+		background: #cecece!important;
+		color: #fff!important
+	}
+
+	.fc-day-grid-event {
+		cursor: pointer
+	}
+
+	.page #calendar table {
+		float: none
+	}
+
+	.mapurl {
+		background-color: #fff
+	}
+
+	.mapurl::after {
+		clear: both;
+		display: block;
+		content: ""
+	}
+
+	.mapurl a {
+		margin: 0;
+		background: #fff!important;
+		display: inline-block!important;
+		padding: 5px!important;
+		float: right
+	}
+
+	.ph-widget.sessionViewer .calendarColumn .label,
+	.ph-widget.sessionViewer .calendarColumnFullRow .decisionHistory.labels,
+	.ph-widget.sessionViewer .calendarColumnFullRow .label {
+		font-size: .9rem;
+		font-weight: 600;
+		margin-bottom: 3px;
+		color: #444
+	}
+
+	.infoPanel {
+		line-height: 1rem;
+		font-size: .8rem;
+		font-weight: 100!important;
+		color: #444
+	}
+
+	.ph-widget.sessionViewer .calendarColumn,
+	.ph-widget.sessionViewer .calendarColumnFullRow {
+		margin: .4rem 0
+	}
+
+	.infoPanel table {
+		width: 100%;
+		text-align: center
+	}
+
+	.infoPanel table tr td,
+	.infoPanel table tr th {
+		padding: 5px;
+		font-size: .8rem
+	}
+
+	.infoPanel table tbody tr:nth-child(odd) {
+		background: #efefef
+	}
+
+	.courtDetailContainer,
+	.decisionDetailContainer,
+	.entityDetailContainer {
+		display: none
+	}
+
+	.entityDetailContainer {
+		border-top: 1px dashed #cecece;
+		border-bottom: 1px dashed #cecece
+	}
+
+	.courtDetailContainer::after,
+	.decisionDetailContainer::after,
+	.entityDetailContainer::after {
+		clear: both;
+		content: "";
+		display: block
+	}
+</style>
+
 <div class="ph-widget">
 	<div class="loading" id='loading' style='display: none;'></div>
 	<div class="calendar" id="calendar"></div>
@@ -95,8 +199,8 @@
 					//this is a philadelphia local (EST) date, but it is marked as UTC
 					//var databasedate = new serverDate();
 					//databasedate = serverDate(val.scheduled_datetime)
-					var hearingStartDate 	= serverDate(val.scheduled_datetime);
-					var hearingEndDate 		= serverDate(val.scheduled_datetime);
+					var hearingStartDate = serverDate(val.scheduled_datetime);
+					var hearingEndDate = serverDate(val.scheduled_datetime);
 					hearingEndDate.addDays(1);
 
 					events.push({
@@ -147,18 +251,18 @@
 					var hearingStartDate = serverDate(val.date_scheduled);
 
 					hearings.push({
-						appeal_id: 			$.trim(val.appeal_key),
-						appeal_number: 		$.trim(val.appealno),
-						application_type: 	$.trim(val.applictype),
-						grounds:			$.trim(val.appealgrounds),
-						primary_applicant: 	$.trim(val.primaryapplicant),
-						capacity: 			$.trim(val.applicantcapacity),
+						appeal_id: $.trim(val.appeal_key),
+						appeal_number: $.trim(val.appealno),
+						application_type: $.trim(val.applictype),
+						grounds: $.trim(val.appealgrounds),
+						primary_applicant: $.trim(val.primaryapplicant),
+						capacity: $.trim(val.applicantcapacity),
 						scheduled_datetime: hearingStartDate,
-						location_id: 		null,
-						owner: 				$.trim(val.ownername),
-						location: 			laddr,
-						ent: 				ent,
-						entName: 			entName,
+						location_id: null,
+						owner: $.trim(val.ownername),
+						location: laddr,
+						ent: ent,
+						entName: entName,
 						descriptionofproject: val.descriptionofproject
 					});
 				});
@@ -167,8 +271,8 @@
 		};
 
 		/**
-		* Return the Time in format "h:i A"" of a datetime.
-		*/
+		 * Return the Time in format "h:i A"" of a datetime.
+		 */
 		function clockTime(d) {
 			var currentTime = new Date(d);
 			var hours = currentTime.getHours();
@@ -192,8 +296,10 @@
 			} else {
 				ampm += "AM";
 			}
+			if (hours == '0' || hours == '00') {
+				return "Time not provided";
+			}
 			result += ("" + hours + ":" + minutes + " " + ampm);
-
 			return result;
 		}
 
@@ -220,82 +326,171 @@
 					'id': val.appeal_id
 				}); //.appendTo(lf);
 
-				$('<div>', {'class': 'infoHeader'}).text(val.location)
+				$('<div>', {
+						'class': 'infoHeader'
+					}).text(val.location)
 					.appendTo(hd);
-				$('<div>', {'class': 'mapurl text'}).append($('<a>', {'target': '_blank','href': 'http://www.phila.gov/map?address=' + urlparam}).text("Map"))
+				$('<div>', {
+						'class': 'mapurl text'
+					}).append($('<a>', {
+						'target': '_blank',
+						'href': 'http://www.phila.gov/map?address=' + urlparam
+					}).text("Map"))
 					.appendTo(hd);
-				$('<div>', {'class': 'calendarColumn'})
-					.append($('<div>', {'class': 'label'}).text('Appeal Number:'))
-					.append($('<div>', {'class': 'text appealnumber'}).text(val.appeal_number))
+				$('<div>', {
+						'class': 'calendarColumn'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text('Appeal Number:'))
+					.append($('<div>', {
+						'class': 'text appealnumber'
+					}).text(val.appeal_number))
 					.appendTo(hd);
-				$('<div>', {'class': 'calendarColumn'})
-					.append($('<div>', {'class': 'label'}).text('Scheduled Time:'))
-					.append($('<div>', {'class': 'text'}).text(timestringparam))
+				$('<div>', {
+						'class': 'calendarColumn'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text('Scheduled Time:'))
+					.append($('<div>', {
+						'class': 'text'
+					}).text(timestringparam))
 					.appendTo(hd);
-				$('<div>', {'class': 'calendarColumn'})
-					.append($('<div>', {'class': 'label'}).text('Appeal Type:'))
-					.append($('<div>', {'class': 'text appealtype'}))
+				$('<div>', {
+						'class': 'calendarColumn'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text('Appeal Type:'))
+					.append($('<div>', {
+						'class': 'text appealtype'
+					}))
 					.appendTo(hd);
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 
-				var entity = $('<div>', {'class': 'text entitynum'});
-				var value  = parseInt(String(val.descriptionofproject).replace(/[^0-9\.]/g, ''), 10);
+				var entity = $('<div>', {
+					'class': 'text entitynum'
+				});
+				var value = parseInt(String(val.descriptionofproject).replace(/[^0-9\.]/g, ''), 10);
 
-				if( val.descriptionofproject ) {
-					entity.text( val.descriptionofproject );
+				if (val.descriptionofproject) {
+					entity.text(val.descriptionofproject);
 					//.append( $( '<a>', { 'class': 'moredetails-link', 'href': 'javascript:void(0);' }).data({ "ent": val.ent, "value": value }).text('[+]') );
 				} else {
-					entity.text( "N/A" );
+					entity.text("N/A");
 				}
 
-				$('<div>', {'class': 'calendarColumn'})
-					.append($('<div>', {'class': 'label'}).text(val.entName + ' #:'))
+				$('<div>', {
+						'class': 'calendarColumn'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text(val.entName + ' #:'))
 					.append(entity)
 					.appendTo(hd);
-				$('<div>', {'class': 'calendarColumnFullRow'}).append($('<div>', {'class': 'entityDetailContainer'})).appendTo(hd);
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'calendarColumnFullRow'
+				}).append($('<div>', {
+					'class': 'entityDetailContainer'
+				})).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 
-				$('<div>', {'class': 'calendarColumnFullRow'})
-					.append($('<div>', {'class': 'label'}).text('Appeal Grounds:'))
-					.append($('<div>', {'class': 'text'}).text(val.grounds))
+				$('<div>', {
+						'class': 'calendarColumnFullRow'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text('Appeal Grounds:'))
+					.append($('<div>', {
+						'class': 'text'
+					}).text(val.grounds))
 					.appendTo(hd);
-				$('<div>', {'class': 'calendarColumn'})
-					.append($('<div>', {'class': 'label'}).text("Decision History"))
-					.append($('<a>', {'class': 'decisionLink','href': 'javascript:void(0);'}).data('appeal_key', val.appeal_id).text('[+]'))
+				$('<div>', {
+						'class': 'calendarColumn'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text("Decision History"))
+					.append($('<a>', {
+						'class': 'decisionLink',
+						'href': 'javascript:void(0);'
+					}).data('appeal_key', val.appeal_id).text('[+]'))
 					.appendTo(hd);
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 
-				$('<div>', {'class': 'calendarColumnFullRow'}).append($('<div>', {'class': 'decisionDetailContainer'})).appendTo(hd);
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'calendarColumnFullRow'
+				}).append($('<div>', {
+					'class': 'decisionDetailContainer'
+				})).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 
-				$('<div>', {'class': 'calendarColumn'})
-					.append($('<div>', {'class': 'label'}).text("Court History"))
-					.append($('<a>', {'class': 'courtLink','href': 'javascript:void(0);'}).data('appeal_key', val.appeal_id).text('[+]'))
+				$('<div>', {
+						'class': 'calendarColumn'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text("Court History"))
+					.append($('<a>', {
+						'class': 'courtLink',
+						'href': 'javascript:void(0);'
+					}).data('appeal_key', val.appeal_id).text('[+]'))
 					.appendTo(hd);
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 
-				$('<div>', {'class': 'calendarColumnFullRow'}).append($('<div>', {'class': 'courtDetailContainer'})).appendTo(hd);
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'calendarColumnFullRow'
+				}).append($('<div>', {
+					'class': 'courtDetailContainer'
+				})).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 
-				$('<div>', {'class': 'calendarColumnFullRow'})
-					.append($('<div>', {'class': 'label'}).text('Primary Applicant:'))
-					.append($('<div>', {'class': 'text'}).text(val.owner))
+				$('<div>', {
+						'class': 'calendarColumnFullRow'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text('Primary Applicant:'))
+					.append($('<div>', {
+						'class': 'text'
+					}).text(val.owner))
 					.appendTo(hd);
 
-				$('<div>', {'class': 'calendarColumnFullRow'})
-					.append($('<div>', {'class': 'label'}).text('Capacity:'))
-					.append($('<div>', {'class': 'text'}).text( ( val.capacity ) ? val.capacity : " - " ))
+				$('<div>', {
+						'class': 'calendarColumnFullRow'
+					})
+					.append($('<div>', {
+						'class': 'label'
+					}).text('Capacity:'))
+					.append($('<div>', {
+						'class': 'text'
+					}).text((val.capacity) ? val.capacity : " - "))
 					.appendTo(hd);
 
-				$('<div>', {'class': 'cf'}).appendTo(hd);
+				$('<div>', {
+					'class': 'cf'
+				}).appendTo(hd);
 				$(".sessionViewer>.infoPanel").append(hd);
 				$panel.append(lf);
 			});
 
-			$( '.loading' ).hide();
-			$( ".courtLink" ).off( 'click' ).on( 'click', courtDetail );
-			$( '.decisionLink' ).off( 'click' ).on( 'click', decisionDetail );
-			$( '.moredetails-link' ).off( 'click' ).on( 'click', entityDetail );
+			$('.loading').hide();
+			$(".courtLink").off('click').on('click', courtDetail);
+			$('.decisionLink').off('click').on('click', decisionDetail);
+			$('.moredetails-link').off('click').on('click', entityDetail);
 		};
 
 		function addressDetail() {
@@ -308,13 +503,19 @@
 			} else {
 				currentContext = $('#' + $(this).data('appeal_key')).stop().slideDown();
 			}
-			
-			var query = serviceURL + encodeURIComponent("SELECT appealtype FROM LI_APPEALS_TYPE WHERE appealkey = '" + $(this).data('appeal_key') + "'" );
-			serviceCall( query, function (data, callback) {
-				if (data != null && ! data.error && data.rows) {
-					$( '.appealtype', currentContext ).empty();
-					$.each( data.rows, function(){
-						$( '.appealtype', currentContext ).append( $( "<span>", { "class": "appeal-type" }).text( this.appealtype ) );
+
+			var query = serviceURL + encodeURIComponent("SELECT appealtype FROM LI_APPEALS_TYPE WHERE appealkey = '" + $(this).data(
+				'appeal_key') + "'");
+			serviceCall(query, function (data, callback) {
+				if (data != null && !data.error && data.rows) {
+					$('.appealtype', currentContext).empty();
+					$.each(data.rows, function () {
+						if (this.appealtype == '') {
+							this.appealtype = 'Appeal Type not provided';
+						}
+						$('.appealtype', currentContext).append($("<span>", {
+							"class": "appeal-type"
+						}).text(this.appealtype));
 					});
 				}
 			}, null);
@@ -323,8 +524,8 @@
 
 		function decisionDetail() {
 			var element = $(".decisionDetailContainer", currentContext);
-			if ( element.html() > "" ) {
-				if( element.is( ":visible" ) ) {
+			if (element.html() > "") {
+				if (element.is(":visible")) {
 					element.slideUp();
 					$(".decisionLink", currentContext).text("[+]");
 				} else {
@@ -337,30 +538,33 @@
 			$('.loading').show();
 			$(".decisionLink", currentContext).text("[-]");
 
-			var query = serviceURL + encodeURIComponent("SELECT * FROM LI_BOARD_DECISIONS WHERE appealkey = '" + $(this).data('appeal_key') + "'");
+			var query = serviceURL + encodeURIComponent("SELECT * FROM LI_BOARD_DECISIONS WHERE appealkey = '" + $(this).data(
+				'appeal_key') + "'");
 			serviceCall(query, function (data) {
 				element.empty();
 				if (data != null && !data.error && data.rows) {
-					if( data.rows.length ) {
+					if (data.rows.length) {
 						var t = $('<table>', {
-							'class': 'appealsCalendar'
-						})
-						.append($('<thead>')
-							.append($('<tr>', {
-									'class': 'decisionHistory labels'
-								})
-								.append($('<th>').text("Decision Date"))
-								.append($('<th>').text("Decision"))
+								'class': 'appealsCalendar'
+							})
+							.append($('<thead>')
+								.append($('<tr>', {
+										'class': 'decisionHistory labels'
+									})
+									.append($('<th>').text("Decision Date"))
+									.append($('<th>').text("Decision"))
+								)
 							)
-						)
-						.append($('<tbody>')).appendTo(element);
+							.append($('<tbody>')).appendTo(element);
 
 						$.each(data.rows, function (key, val) {
 							var actionDate = new Date();
 							actionDate = serverDate(val.decisiondate);
 
 
-							$('<tr>', {'class': 'decisionHistory values'})
+							$('<tr>', {
+									'class': 'decisionHistory values'
+								})
 								.append($('<td>').text(((val.decisiondate != null) ? actionDate.toDateString() : ' - ')))
 								.append($('<td>').text(((val.decision != null) ? val.decision : ' - ')))
 								.appendTo(t);
@@ -388,8 +592,8 @@
 
 		function courtDetail() {
 			var element = $(".courtDetailContainer", currentContext);
-			if ( element.html() > "" ) {
-				if( element.is( ":visible" ) ) {
+			if (element.html() > "") {
+				if (element.is(":visible")) {
 					element.slideUp();
 					$(".courtLink", currentContext).text("[+]");
 				} else {
@@ -402,55 +606,66 @@
 			$('.loading').show();
 			$(".courtLink", currentContext).text("[-]");
 
-			var query = serviceURL + encodeURIComponent("SELECT * FROM LI_COURT_APPEALS WHERE appealkey = '" + $( this ).data( "appeal_key" ) + "' ORDER BY courtactiondate DESC");
+			var query = serviceURL + encodeURIComponent("SELECT * FROM LI_COURT_APPEALS WHERE appealkey = '" + $(this).data(
+				"appeal_key") + "' ORDER BY courtactiondate DESC");
 			serviceCall(query, function (data, callback) {
 				element.empty();
-				if ( data != null && ! data.error && data.rows ) {
-					if( data.rows.length ) {
-						var table = $( "<table>", { "class": "appealsCalendar" });
-						var thead = $( "<thead>" ).appendTo( table );
-						$( "<tr>", { "class": "courtHistory labels" }).appendTo( thead )
-							.append( $( "<th>" ).text( "Date" ) )
-							.append( $( "<th>" ).text( "Court Type" ) )
-							.append( $( "<th>" ).text( "Case#" ) )
-							.append( $( "<th>" ).text( "Action" ) )
-							.append( $( "<th>" ).text( "Result" ) )
+				if (data != null && !data.error && data.rows) {
+					if (data.rows.length) {
+						var table = $("<table>", {
+							"class": "appealsCalendar"
+						});
+						var thead = $("<thead>").appendTo(table);
+						$("<tr>", {
+								"class": "courtHistory labels"
+							}).appendTo(thead)
+							.append($("<th>").text("Date"))
+							.append($("<th>").text("Court Type"))
+							.append($("<th>").text("Case#"))
+							.append($("<th>").text("Action"))
+							.append($("<th>").text("Result"))
 
-						var tbody = $( "<tbody>" ).appendTo( table );	
+						var tbody = $("<tbody>").appendTo(table);
 
 						$.each(data.rows, function (key, val) {
-							var tr = $( "<tr>", { "class": "courtHistory value"});
+							var tr = $("<tr>", {
+								"class": "courtHistory value"
+							});
 
-							$( "<td>" )
-								.text( ( ! val.courtactiondate ) ? "" : serverDate(val.courtactiondate).toDateString() )
+							$("<td>")
+								.text((!val.courtactiondate) ? "" : serverDate(val.courtactiondate).toDateString())
 								.appendTo(tr);
 
-							$( "<td>" )
-								.text( ( ! val.court ) ? "" : val.court )
+							$("<td>")
+								.text((!val.court) ? "" : val.court)
 								.appendTo(tr);
 
-							$( "<td>" )
-								.text( ( ! val.courtcasenumber ) ? "" : val.courtcasenumber )
+							$("<td>")
+								.text((!val.courtcasenumber) ? "" : val.courtcasenumber)
 								.appendTo(tr);
 
-							$( "<td>" )
-								.text( ( ! val.courtaction ) ? "" : val.courtaction )
+							$("<td>")
+								.text((!val.courtaction) ? "" : val.courtaction)
 								.appendTo(tr);
 
-							$( "<td>" )
-								.text( ( ! val.courtresult ) ? "" : val.courtresult )
+							$("<td>")
+								.text((!val.courtresult) ? "" : val.courtresult)
 								.appendTo(tr);
-							
+
 							tbody.append(tr);
 
-							if( val.courtproviso ) {
-								var tr2 = $( "<tr>", { "class": "proviso" })
-									.append( $( "<td>", { "colspan" : 5 }).text( val.courtproviso ) );
+							if (val.courtproviso) {
+								var tr2 = $("<tr>", {
+										"class": "proviso"
+									})
+									.append($("<td>", {
+										"colspan": 5
+									}).text(val.courtproviso));
 								tbody.append(tr2);
 							}
 						});
 
-						element.append(table);	
+						element.append(table);
 					} else {
 						element.text("No records found.");
 					}
@@ -470,11 +685,17 @@
 		}
 
 		function appendElement(caption, value, element) {
-			var div = $( '<div>', { 'class' : 'calendarColumn' } )
-				.append( $( '<div>', { 'class' : 'label' } ).text( (caption != null) ? caption : ' - ') )
-				.append( $( '<div>', { 'class' : 'text' } ).text( (value != null) ? value : ' - ') );
+			var div = $('<div>', {
+					'class': 'calendarColumn'
+				})
+				.append($('<div>', {
+					'class': 'label'
+				}).text((caption != null) ? caption : ' - '))
+				.append($('<div>', {
+					'class': 'text'
+				}).text((value != null) ? value : ' - '));
 
-			element.append( div );
+			element.append(div);
 		}
 
 
@@ -484,8 +705,8 @@
 
 		function entityDetail() {
 			var element = $(".entityDetailContainer", currentContext);
-			if ( element.html() > "" ) {
-				if( element.is( ":visible" ) ) {
+			if (element.html() > "") {
+				if (element.is(":visible")) {
 					element.slideUp();
 					$(".moredetails-link", currentContext).text("[+]");
 				} else {
@@ -500,30 +721,36 @@
 
 			element.empty();
 
-			var type  = $( this ).data( 'ent' );
-			query = 'SELECT * FROM LI_PERMITS JOIN LI_APPEALS ON permitnumber = \'' + $( this ).data( 'value' ) + '\' AND (applictype = \'RB_ZBA\' OR applictype = \'RB_BBS\' ) ORDER BY permitissuedate DESC LIMIT 1 OFFSET 0'
-			if( "cases" == type ) {
-				var query = 'SELECT * FROM LI_VIOLATIONS JOIN LI_APPEALS ON casenumber = \'' + $( this ).data( 'value' ) + '\'  AND applictype = \'RB_LIRB\' ORDER BY mostrecentinsp DESC, caseresolutiondate DESC LIMIT 1 OFFSET 0';
+			var type = $(this).data('ent');
+			query = 'SELECT * FROM LI_PERMITS JOIN LI_APPEALS ON permitnumber = \'' + $(this).data('value') +
+				'\' AND (applictype = \'RB_ZBA\' OR applictype = \'RB_BBS\' ) ORDER BY permitissuedate DESC LIMIT 1 OFFSET 0'
+			if ("cases" == type) {
+				var query = 'SELECT * FROM LI_VIOLATIONS JOIN LI_APPEALS ON casenumber = \'' + $(this).data('value') +
+					'\'  AND applictype = \'RB_LIRB\' ORDER BY mostrecentinsp DESC, caseresolutiondate DESC LIMIT 1 OFFSET 0';
 			}
 
 			serviceCall(serviceURL + encodeURIComponent(query), function (data, callback) {
-				if ( data != null && ! data.error && data.rows ) {
-					if( data.rows.length ) {
+				if (data != null && !data.error && data.rows) {
+					if (data.rows.length) {
 						var val = data.rows[0];
-						if ( "cases" == type ) {
+						if ("cases" == type) {
 							appendElement("Case Group", val.casegroup, element);
-							appendElement("Date Added", ( val.caseaddeddate ) ? serverDate( val.caseaddeddate ).toDateString() : val.caseaddeddate, element )
-							appendElement("Last Updated", ( val.mostrecentinsp ) ? serverDate( val.mostrecentinsp ).toDateString() : val.mostrecentinsp, element )
+							appendElement("Date Added", (val.caseaddeddate) ? serverDate(val.caseaddeddate).toDateString() : val.caseaddeddate,
+								element)
+							appendElement("Last Updated", (val.mostrecentinsp) ? serverDate(val.mostrecentinsp).toDateString() : val.mostrecentinsp,
+								element)
 							appendElement("Status", val.casestatus, element);
 							appendElement("Resolution", val.caseresolutioncode, element);
-							appendElement("Date of Resolution", ( val.caseresolutiondate ) ? serverDate( val.caseresolutiondate ).toDateString() : val.caseresolutiondate, element);
-							appendElement("Priority", ( val.prioritydesc + " (" + val.casepriority + ")" ), element);
+							appendElement("Date of Resolution", (val.caseresolutiondate) ? serverDate(val.caseresolutiondate).toDateString() :
+								val.caseresolutiondate, element);
+							appendElement("Priority", (val.prioritydesc + " (" + val.casepriority + ")"), element);
 
-						} else if ( "permits" == type ) {
+						} else if ("permits" == type) {
 							appendElement("Application Type", val.permitdescription, element);
 							appendElement("Permit Type", val.permit_type_name, element);
 							appendElement("Status", val.status, element);
-							appendElement("Date Issued", ( val.permitissuedate ) ? serverDate( val.permitissuedate ).toDateString() : val.permitissuedate, element);
+							appendElement("Date Issued", (val.permitissuedate) ? serverDate(val.permitissuedate).toDateString() : val.permitissuedate,
+								element);
 
 							// appendElement("Last Updated", (val.updated_datetime == undefined) ? 'N/A' : new Date(parseJsonDate(val.updated_datetime))
 							// 	.toDateString(), element); // IT LOOKS LIKE THIS INFORMATION IS REMOVED
@@ -567,14 +794,14 @@
 				} else {
 					element.text("No records found.");
 				}
-				
+
 				element.slideDown();
 				$('.loading').hide();
 			}, null);
 			return false;
 		};
 
-		$(function(){
+		$(function () {
 			var spinner = new Spinner({
 				lines: 10, // The number of lines to draw
 				length: 10, // The length of each line
@@ -606,8 +833,11 @@
 							$(".sessionViewer>.infoHeader>h2").empty();
 							$(".sessionViewer>.infoPanel").empty();
 
-							var apiurl = serviceURL + encodeURIComponent("SELECT DATE(date_scheduled) AS scheduled_datetime, applictype AS board_type FROM LI_APPEALS WHERE DATE(date_scheduled) >= '" + start.toISOString() +
-								"' AND DATE(date_scheduled) < '" + end.toISOString() + "' GROUP BY scheduled_datetime, board_type ORDER BY scheduled_datetime ASC");
+							var apiurl = serviceURL + encodeURIComponent(
+								"SELECT DATE(date_scheduled) AS scheduled_datetime, applictype AS board_type FROM LI_APPEALS WHERE DATE(date_scheduled) >= '" +
+								start.toISOString() +
+								"' AND DATE(date_scheduled) < '" + end.toISOString() +
+								"' GROUP BY scheduled_datetime, board_type ORDER BY scheduled_datetime ASC");
 							serviceCall(apiurl, getEvents, callback);
 						},
 						color: '#cecece',
@@ -633,8 +863,9 @@
 						.hearing_start).toDateString());
 					$(".sessionViewer .address-content").html("");
 					$(".sessionViewer>.infoPanel").html("");
-					var apiurl = serviceURL + encodeURIComponent("SELECT * FROM LI_APPEALS WHERE DATE(date_scheduled) >= '" + toISOString(calEvent.hearing_start) + 
-							"' AND DATE(date_scheduled) < '" +  toISOString(calEvent.hearing_end) + "' ORDER BY date_scheduled ASC");
+					var apiurl = serviceURL + encodeURIComponent("SELECT * FROM LI_APPEALS WHERE DATE(date_scheduled) >= '" +
+						toISOString(calEvent.hearing_start) +
+						"' AND DATE(date_scheduled) < '" + toISOString(calEvent.hearing_end) + "' ORDER BY date_scheduled ASC");
 
 					$('.loading').show();
 					serviceCall(apiurl, getHearings, populateHearings);
@@ -666,4 +897,4 @@
 	</div>
 	<div class="infoPanel">
 	</div>
-</div>												
+</div>
